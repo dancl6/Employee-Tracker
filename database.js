@@ -237,8 +237,6 @@ var startPage = function () {
     
 
         } else if (answers.build === 'Add an employee') {
-          console.log(empArray);
-          console.log(rolesArray);
           return inquirer.prompt([
             {
               type: 'input',
