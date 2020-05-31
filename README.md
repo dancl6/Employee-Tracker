@@ -40,6 +40,6 @@ None
 
 ## Questions
 
-[User Git Hub Link](https://github.com/github.com/dancl6/Employee-Tracker/  "Git Hub Link")
+[User Git Hub Link](https://github.com/dancl6/Employee-Tracker/  "Git Hub Link")
 
 User Email: danielclyons@yahoo.com
