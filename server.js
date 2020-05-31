@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./db/database');
+const db = require('./database');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,23 +8,9 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// get the client
-const mysql = require('mysql2');
 
-// create the connection to database
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  // port: 3306,
-  password: 'mysql',
-  database: 'db/company.db'
-});
 
-connection.connect(err => {
-  if (err) throw err;
-  console.log('connected as id ' + connection.threadId + '\n');
-  // createProduct();
-});
+
 
 // simple query
 // connection.query(
@@ -50,8 +36,8 @@ app.use((req, res) => {
 
 
 // Start server after DB connection
-// db.on('open', () => {
-//   app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-//   });
-// });
+db.on('open', () => {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+});
