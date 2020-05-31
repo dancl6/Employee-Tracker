@@ -90,7 +90,7 @@ var updateObjAndArrays = function () {
     }
   )
 
-  // below not currently used but for possible use for managers
+  // below not currently used but may be in future for possible use for managers
   // const empAll = `SELECT * FROM employee`;
   db.query(
     empAll,
@@ -120,7 +120,10 @@ var startPage = function () {
       const rolesData = `SELECT roles.id, roles.title, roles.salary, dept_name FROM roles LEFT JOIN department on roles.department_id = department.id`;
       const employeeData = `SELECT * FROM employee`;
       const departmentData = `SELECT * FROM department`;
-      const viewAllDept = `SELECT employee.id, first_name, last_name, title, dept_name, salary, manager_id FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN department ON roles.department_id = department.id ;`
+      const viewAllDept = `select e.id, e.first_name, e.last_name, roles.title, department.dept_name, roles.salary, concat( emp_manager.first_name, ' ', emp_manager.last_name) 
+      AS manager FROM employee e
+      LEFT JOIN employee emp_manager ON e.manager_id = emp_manager.id 
+      LEFT JOIN roles ON e.role_id = roles.id LEFT JOIN department ON roles.department_id = department.id ;`;
       return inquirer.prompt([
         {
           type: 'list',
